@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.0.5</version>
+    </parent>
+    
     <groupId>io.sophiadata</groupId>
     <artifactId>gmall-practice</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -15,13 +20,7 @@
         <module>gmall-model</module>
         <module>gmall-manager</module>
     </modules>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.5</version>
-    </parent>
-
+    
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -33,7 +32,7 @@
         <spotless.version>2.23.0</spotless.version>
         <versions-maven-plugin.version>2.14.2</versions-maven-plugin.version>
     </properties>
-
+    
     <dependencyManagement>
         <dependencies>
             <!-- mybatis和spring boot整合的起步依赖 -->
@@ -42,21 +41,21 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.version}</version>
             </dependency>
-
+            
             <!-- mysql驱动 -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
-
+            
             <!--fastjson-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
-
+            
             <!-- lombok依赖 -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -65,7 +64,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    
     <build>
         <plugins>
             <plugin>
@@ -89,7 +88,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
             </plugin>
-
+            
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
@@ -112,7 +111,7 @@
                             <replacement>$1</replacement>
                         </replaceRegex>
                         <licenseHeader>
-                            <file>tool/license.header</file>
+                            <file>tools/license.header</file>
                         </licenseHeader>
                     </java>
                     <pom>
@@ -150,7 +149,7 @@
             </plugin>
         </plugins>
     </build>
-
+    
     <repositories>
         <repository>
             <snapshots>
@@ -170,7 +169,7 @@
             <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
         </repository>
     </repositories>
-
+    
     <profiles>
         <profile>
             <id>google-mirror</id>
@@ -181,5 +180,5 @@
             </properties>
         </profile>
     </profiles>
-
+    
 </project>
